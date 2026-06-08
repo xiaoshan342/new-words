@@ -1,0 +1,287 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.orb1 {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: var(--cyan);
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.07;
+  top: -150px;
+  right: -100px;
+  pointer-events: none;
+  animation: glow 8s ease-in-out infinite;
+}
+
+.orb2 {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: var(--purple);
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.07;
+  bottom: -100px;
+  left: -100px;
+  pointer-events: none;
+  animation: glow 10s ease-in-out infinite reverse;
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.07; }
+  50% { opacity: 0.12; }
+}
+
+.content {
+  width: 100%;
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: slideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
+.header {
+  text-align: center;
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0 0 0.4rem;
+  background: linear-gradient(135deg, var(--cyan), var(--purple), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradeLabel {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Score Card */
+.scoreCard {
+  text-align: center;
+  padding: 2rem !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.scoreBig {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.scoreNum {
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--cyan);
+  line-height: 1;
+}
+
+.scoreDivider {
+  font-size: 2rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.scoreTotal {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+/* Ring */
+.pctRing {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.ring {
+  width: 120px;
+  height: 120px;
+  transform: scaleX(-1);
+}
+
+.ringFill {
+  transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pctText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* Stat Row */
+.statRow {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.statNum {
+  font-size: 1.8rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+.statDivider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Lifetime Row */
+.lifetimeRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.lifetimeStat {
+  text-align: center;
+  padding: 1.25rem 1rem !important;
+}
+
+.lifetimeNum {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.lifetimeLabel {
+  font-size: 0.73rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+/* Wrong Answers */
+.wrongCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wrongTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.wrongList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-height: 320px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+.wrongItem {
+  padding: 0.9rem 1rem;
+  background: rgba(255, 55, 95, 0.04);
+  border: 1px solid rgba(255, 55, 95, 0.12);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.wrongWord {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.arrowIcon {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.correctAnswer {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.yourAnswer {
+  font-size: 0.8rem;
+  color: var(--pink);
+  font-style: italic;
+}
+
+/* Perfect message */
+.perfectMsg {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--green);
+  padding: 1.5rem;
+  background: rgba(57, 255, 20, 0.05);
+  border: 1px solid rgba(57, 255, 20, 0.15);
+  border-radius: 14px;
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Restart Button */
+.restartBtn {
+  width: 100%;
+  font-size: 1.1rem !important;
+}

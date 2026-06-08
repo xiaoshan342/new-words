@@ -14,7 +14,7 @@ import { LifetimeStats, loadStats, updateStats } from '@/utils/localStorage';
 
 export type AppScreen = 'home' | 'setup' | 'test' | 'result';
 export type TestDirection = 'en-vi' | 'vi-en';
-export type QuestionCount = 10 | 20 | 50;
+export type QuestionCount = number;
 
 export interface TestConfig {
   category: Category;

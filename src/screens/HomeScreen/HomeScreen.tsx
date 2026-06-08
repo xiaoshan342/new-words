@@ -6,10 +6,9 @@ import { Card } from '@/components/Card/Card';
 import { Button } from '@/components/Button/Button';
 import { useAppContext } from '@/context/AppContext';
 import { ALL_CATEGORIES, Category } from '@/data';
-import { TestDirection, QuestionCount } from '@/context/AppContext';
+import { TestDirection } from '@/context/AppContext';
 import { LevelSelectModal } from '@/components/LevelSelectModal/LevelSelectModal';
 
-const QUESTION_COUNTS: QuestionCount[] = [10, 20, 50];
 
 export function HomeScreen() {
   const { state, dispatch } = useAppContext();
@@ -93,27 +92,6 @@ export function HomeScreen() {
             </div>
           </div>
 
-          {/* Question Count */}
-          <div className={styles.fieldGroup}>
-            <label className={styles.fieldLabel}>Number of Questions</label>
-            <div className={styles.chipRow}>
-              {QUESTION_COUNTS.map((n) => (
-                <button
-                  key={n}
-                  id={`count-${n}`}
-                  className={`${styles.chip} ${styles.chipSmall} ${config.questionCount === n ? styles.chipActive : ''}`}
-                  onClick={() =>
-                    dispatch({
-                      type: 'UPDATE_CONFIG',
-                      config: { questionCount: n },
-                    })
-                  }
-                >
-                  {n}
-                </button>
-              ))}
-            </div>
-          </div>
         </Card>
 
         <Button

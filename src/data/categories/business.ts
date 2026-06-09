@@ -37,11 +37,11 @@ const B1_WORDS: VocabWord[] = [
    {
       id: 'biz-b1-02',
       en: 'employer',
-      vi: ['chủ doanh nghiệp', 'người sử dụng lao động'],
+      vi: ['chủ doanh nghiệp', 'người sử dụng lao động', 'nhân viên', 'người lao động'],
       category: 'Business',
       level: 'B1',
    },
-   { id: 'biz-b1-03', en: 'meeting', vi: ['cuộc họp', 'sự gặp mặt'], category: 'Business', level: 'B1' },
+   { id: 'biz-b1-03', en: 'meeting', vi: ['cuộc họp', 'gặp mặt'], category: 'Business', level: 'B1' },
    { id: 'biz-b1-04', en: 'project', vi: ['dự án', 'kế hoạch'], category: 'Business', level: 'B1' },
    { id: 'biz-b1-05', en: 'deadline', vi: ['hạn chót', 'thời hạn cuối cùng'], category: 'Business', level: 'B1' },
    { id: 'biz-b1-06', en: 'report', vi: ['báo cáo', 'bản báo cáo'], category: 'Business', level: 'B1' },

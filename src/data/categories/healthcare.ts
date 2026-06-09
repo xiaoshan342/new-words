@@ -20,21 +20,16 @@ const A1_WORDS: VocabWord[] = [
    { id: 'a1-5', en: 'teacher', vi: ['giáo viên', 'người dạy học'], category: 'People', level: 'A1' },
    { id: 'a1-6', en: 'student', vi: ['học sinh', 'sinh viên'], category: 'People', level: 'A1' },
    { id: 'a1-7', en: 'school', vi: ['trường học', 'hệ thống giáo dục'], category: 'Education', level: 'A1' },
-   { id: 'a1-8', en: 'car', vi: ['xe hơi', 'phương tiện cá nhân'], category: 'Transport', level: 'A1' },
-   { id: 'a1-9', en: 'dog', vi: ['con chó'], category: 'Animals', level: 'A1' },
-   { id: 'a1-10', en: 'cat', vi: ['con mèo'], category: 'Animals', level: 'A1' },
 ];
 
 const A2_WORDS: VocabWord[] = [
    { id: 'a2-1', en: 'market', vi: ['chợ', 'thị trường', 'khu mua bán'], category: 'Shopping', level: 'A2' },
-   { id: 'a2-2', en: 'bus stop', vi: ['trạm xe buýt', 'điểm dừng xe buýt'], category: 'Transport', level: 'A2' },
    { id: 'a2-3', en: 'job', vi: ['công việc', 'việc làm', 'nhiệm vụ'], category: 'Work', level: 'A2' },
    { id: 'a2-4', en: 'money', vi: ['tiền', 'tiền bạc', 'tài chính'], category: 'Finance', level: 'A2' },
    { id: 'a2-5', en: 'food', vi: ['thức ăn', 'đồ ăn', 'lương thực'], category: 'Food', level: 'A2' },
    { id: 'a2-6', en: 'clothes', vi: ['quần áo', 'trang phục'], category: 'Shopping', level: 'A2' },
    { id: 'a2-7', en: 'rain', vi: ['mưa', 'cơn mưa', 'thời tiết mưa'], category: 'Weather', level: 'A2' },
    { id: 'a2-8', en: 'friend', vi: ['bạn bè', 'người bạn'], category: 'People', level: 'A2' },
-   { id: 'a2-9', en: 'email', vi: ['thư điện tử', 'email', 'tin nhắn điện tử'], category: 'Technology', level: 'A2' },
    { id: 'a2-10', en: 'phone', vi: ['điện thoại', 'gọi điện (động từ)'], category: 'Technology', level: 'A2' },
 ];
 

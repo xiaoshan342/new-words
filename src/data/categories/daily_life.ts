@@ -15,14 +15,12 @@ const A1_WORDS: VocabWord[] = [
 
 const A2_WORDS: VocabWord[] = [
    { id: 'a2-1', en: 'market', vi: ['chợ', 'thị trường'], category: 'Daily Life', level: 'A2' },
-   { id: 'a2-2', en: 'bus stop', vi: ['trạm xe buýt', 'điểm dừng xe buýt'], category: 'Daily Life', level: 'A2' },
    { id: 'a2-3', en: 'job', vi: ['công việc', 'việc làm'], category: 'Daily Life', level: 'A2' },
    { id: 'a2-4', en: 'money', vi: ['tiền', 'tiền bạc'], category: 'Daily Life', level: 'A2' },
    { id: 'a2-5', en: 'food', vi: ['thức ăn', 'thực phẩm'], category: 'Daily Life', level: 'A2' },
    { id: 'a2-6', en: 'clothes', vi: ['quần áo', 'trang phục'], category: 'Daily Life', level: 'A2' },
    { id: 'a2-7', en: 'rain', vi: ['mưa', 'cơn mưa'], category: 'Daily Life', level: 'A2' },
    { id: 'a2-8', en: 'friend', vi: ['bạn bè', 'người bạn'], category: 'Daily Life', level: 'A2' },
-   { id: 'a2-9', en: 'email', vi: ['thư điện tử', 'gửi email'], category: 'Daily Life', level: 'A2' },
    { id: 'a2-10', en: 'phone', vi: ['điện thoại', 'gọi điện thoại'], category: 'Daily Life', level: 'A2' },
 ];
 
@@ -34,7 +32,7 @@ const B1_WORDS: VocabWord[] = [
    {
       id: 'b1-5',
       en: 'schedule',
-      vi: ['lịch trình', 'thời gian biểu', 'lên lịch'],
+      vi: ['lịch trình', 'thời gian biểu', 'lên lịch', 'lịch'],
       category: 'Daily Life',
       level: 'B1',
    },

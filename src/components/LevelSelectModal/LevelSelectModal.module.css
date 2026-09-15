@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   z-index: 100;
-  padding: 1rem;
+  padding: max(0.75rem, env(safe-area-inset-top)) 0.75rem max(0.75rem, env(safe-area-inset-bottom));
   animation: backdropIn 0.2s ease;
 }
 
@@ -23,7 +23,9 @@
   width: 100%;
   max-width: 500px;
   max-height: 90vh;
+  max-height: 90dvh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   background: rgba(13, 18, 32, 0.97);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
@@ -278,10 +280,46 @@
 }
 
 @media (max-width: 420px) {
+  .modal {
+    padding: 1rem 1rem 0;
+    gap: 0.9rem;
+    border-radius: 18px;
+    max-height: 92dvh;
+  }
+
+  .section + .section {
+    padding-top: 0.9rem;
+  }
+
+  .sectionSub {
+    display: none;
+  }
+
   .levelGrid {
     grid-template-columns: 1fr 1fr;
+    gap: 0.45rem;
   }
+
   .levelCard:first-child {
     grid-column: 1 / -1;
+  }
+
+  .levelCard {
+    min-height: 56px;
+    padding: 0.55rem 0.4rem;
+  }
+
+  .countChip,
+  .cancelBtn,
+  .confirmBtn {
+    min-height: 44px;
+  }
+
+  .actions {
+    position: sticky;
+    bottom: 0;
+    background: rgba(13, 18, 32, 0.98);
+    padding: 0.7rem 0 calc(0.65rem + env(safe-area-inset-bottom));
+    margin-top: 0;
   }
 }

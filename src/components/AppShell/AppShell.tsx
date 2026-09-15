@@ -5,6 +5,7 @@ import { useAppContext } from '@/context/AppContext';
 import { HomeScreen } from '@/screens/HomeScreen/HomeScreen';
 import { TestSetupScreen } from '@/screens/TestSetupScreen/TestSetupScreen';
 import { TestScreen } from '@/screens/TestScreen/TestScreen';
+import { MatchScreen } from '@/screens/MatchScreen/MatchScreen';
 import { ResultScreen } from '@/screens/ResultScreen/ResultScreen';
 
 export function AppShell() {
@@ -16,7 +17,7 @@ export function AppShell() {
     case 'setup':
       return <TestSetupScreen />;
     case 'test':
-      return <TestScreen />;
+      return state.config.mode === 'match' ? <MatchScreen /> : <TestScreen />;
     case 'result':
       return <ResultScreen />;
     default:

@@ -9,8 +9,9 @@ import { useTestEngine } from "@/hooks/useTestEngine";
 
 export function ResultScreen() {
   const { state } = useAppContext();
-  const { restartTest } = useTestEngine();
+  const { restartTest, startTest } = useTestEngine();
   const { test } = state;
+  const dueThisRound = test.wrongAnswers.length;
 
   const totalQuestions = test.questions.length;
   const correctCount = test.correctCount;
@@ -131,7 +132,7 @@ export function ResultScreen() {
                     </span>
                   </div>
                   <div className={styles.yourAnswer}>
-                    Your answer: &quot;{wa.userAnswer || "(empty)"}&quot;
+                    Your {state.config.mode === 'match' ? 'match' : 'answer'}: &quot;{wa.userAnswer || "(empty)"}&quot;
                   </div>
                 </div>
               ))}
@@ -145,14 +146,36 @@ export function ResultScreen() {
           </div>
         )}
 
-        <Button
-          id="restart-test-btn"
-          size="lg"
-          onClick={restartTest}
-          className={styles.restartBtn}
-        >
-          ↩ Restart Test
-        </Button>
+        <div className={styles.actions}>
+          {dueThisRound > 0 && (
+            <Button
+              id="review-mistakes-btn"
+              size="lg"
+              onClick={() => startTest({ reviewOnly: true })}
+              className={styles.restartBtn}
+            >
+              Ôn từ sai ({dueThisRound})
+            </Button>
+          )}
+          <Button
+            id="continue-test-btn"
+            size="lg"
+            variant={dueThisRound > 0 ? 'secondary' : 'primary'}
+            onClick={() => startTest()}
+            className={styles.restartBtn}
+          >
+            Làm tiếp
+          </Button>
+          <Button
+            id="restart-test-btn"
+            size="lg"
+            variant="secondary"
+            onClick={restartTest}
+            className={styles.restartBtn}
+          >
+            ↩ Về trang chủ
+          </Button>
+        </div>
       </div>
     </div>
   );

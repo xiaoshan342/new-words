@@ -1,11 +1,12 @@
 .container {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: max(1.25rem, env(safe-area-inset-top)) 1rem max(1.5rem, env(safe-area-inset-bottom));
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* Ambient orbs */
@@ -210,11 +211,43 @@
   font-size: 1.15rem !important;
 }
 
+@media (min-width: 768px) {
+  .container {
+    align-items: center;
+  }
+}
+
 @media (max-width: 480px) {
+  .content {
+    gap: 1.15rem;
+  }
+
+  .logoText {
+    font-size: 1.7rem;
+  }
+
+  .tagline {
+    font-size: 0.88rem;
+  }
+
+  .configCard {
+    gap: 1.2rem;
+  }
+
+  .chip {
+    min-height: 44px;
+    padding: 0.5rem 0.95rem;
+  }
+
+  .startBtn {
+    min-height: 48px;
+  }
+
   .statsRow {
     grid-template-columns: repeat(3, 1fr);
     gap: 0.6rem;
   }
+
   .statValue {
     font-size: 1.5rem;
   }

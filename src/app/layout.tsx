@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { AppProvider } from '@/context/AppContext';
 
@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   description:
     'A premium dark-mode vocabulary learning app to master English with interactive tests, real-time feedback, and lifetime progress tracking.',
   keywords: ['vocabulary', 'english', 'learning', 'flashcards', 'vietnamese'],
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#080c14',
 };
 
 export default function RootLayout({

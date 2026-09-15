@@ -4,9 +4,8 @@ import React, { useState } from 'react';
 import styles from './HomeScreen.module.css';
 import { Card } from '@/components/Card/Card';
 import { Button } from '@/components/Button/Button';
-import { useAppContext } from '@/context/AppContext';
+import { useAppContext, TestDirection, TestMode } from '@/context/AppContext';
 import { ALL_CATEGORIES, Category } from '@/data';
-import { TestDirection } from '@/context/AppContext';
 import { LevelSelectModal } from '@/components/LevelSelectModal/LevelSelectModal';
 
 
@@ -70,7 +69,33 @@ export function HomeScreen() {
             </div>
           </div>
 
+          {/* Mode */}
+          <div className={styles.fieldGroup}>
+            <label className={styles.fieldLabel}>Mode</label>
+            <div className={styles.chipRow}>
+              {([
+                { value: 'type', label: 'Gõ đáp án' },
+                { value: 'match', label: 'Ghép cặp' },
+              ] as { value: TestMode; label: string }[]).map((item) => (
+                <button
+                  key={item.value}
+                  id={`mode-${item.value}`}
+                  className={`${styles.chip} ${config.mode === item.value ? styles.chipActive : ''}`}
+                  onClick={() =>
+                    dispatch({
+                      type: 'UPDATE_CONFIG',
+                      config: { mode: item.value },
+                    })
+                  }
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Direction */}
+          {config.mode === 'type' && (
           <div className={styles.fieldGroup}>
             <label className={styles.fieldLabel}>Test Direction</label>
             <div className={styles.chipRow}>
@@ -91,6 +116,7 @@ export function HomeScreen() {
               ))}
             </div>
           </div>
+          )}
 
         </Card>
 

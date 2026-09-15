@@ -1,11 +1,12 @@
 .container {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: max(1.25rem, env(safe-area-inset-top)) 1rem max(1.5rem, env(safe-area-inset-bottom));
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .orb1 {
@@ -192,4 +193,35 @@
   font-size: 0.78rem;
   color: rgba(255, 255, 255, 0.2);
   margin: -0.5rem 0 0;
+}
+
+@media (min-width: 768px) {
+  .container {
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    gap: 1rem;
+  }
+
+  .questionCard {
+    padding: 1.35rem 1rem !important;
+    min-height: 160px;
+  }
+
+  .answerSection {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .submitBtn {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .hint {
+    display: none;
+  }
 }

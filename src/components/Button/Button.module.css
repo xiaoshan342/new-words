@@ -104,4 +104,5 @@
   padding: 1rem 2.5rem;
   font-size: 1.1rem;
   border-radius: 14px;
+  min-height: 48px;
 }

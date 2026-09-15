@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './LevelSelectModal.module.css';
-import { CEFRLevel } from '@/data';
+import { CEFRLevel, getPoolStats } from '@/data';
 import { useAppContext } from '@/context/AppContext';
+import { loadWordMemory } from '@/utils/wordMemory';
 
 interface LevelSelectModalProps {
   onConfirm: () => void;
@@ -57,7 +58,13 @@ export function LevelSelectModal({ onConfirm, onClose }: LevelSelectModalProps) 
   const isPresetActive = (n: number) =>
     questionCount === n && customInput === '';
 
-  const canConfirm = questionCount > 0;
+  const [dueCount, setDueCount] = useState(0);
+  const poolSize = getPoolStats(state.config.category, selectedLevel).size;
+  const canConfirm = questionCount > 0 && poolSize > 0;
+
+  useEffect(() => {
+    setDueCount(getPoolStats(state.config.category, selectedLevel, loadWordMemory()).due);
+  }, [state.config.category, selectedLevel]);
 
   return (
     <div className={styles.backdrop} onClick={handleBackdropClick}>
@@ -120,6 +127,12 @@ export function LevelSelectModal({ onConfirm, onClose }: LevelSelectModalProps) 
           {questionCount > 0 && (
             <p className={styles.countHint}>
               Đã chọn: <strong>{questionCount}</strong> câu
+              {poolSize === 0
+                ? ' · không có từ cho lựa chọn này'
+                : poolSize < questionCount
+                  ? ` · pool chỉ có ${poolSize} từ`
+                  : ` · ${poolSize} từ trong pool`}
+              {dueCount > 0 && poolSize > 0 ? ` · ${dueCount} từ sai sẽ được ưu tiên` : ''}
             </p>
           )}
         </div>

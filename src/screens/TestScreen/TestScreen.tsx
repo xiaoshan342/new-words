@@ -6,9 +6,11 @@ import { Card } from '@/components/Card/Card';
 import { Button } from '@/components/Button/Button';
 import { Input } from '@/components/Input/Input';
 import { ProgressBar } from '@/components/ProgressBar/ProgressBar';
+import { useAppContext } from '@/context/AppContext';
 import { useTestEngine } from '@/hooks/useTestEngine';
 
 export function TestScreen() {
+  const { dispatch } = useAppContext();
   const {
     currentQuestion,
     inputValue,
@@ -36,7 +38,30 @@ export function TestScreen() {
     }
   };
 
-  if (!currentQuestion) return null;
+  if (!currentQuestion) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.orb1} />
+        <div className={styles.orb2} />
+        <div className={styles.content}>
+          <Card className={styles.questionCard}>
+            <div className={styles.word}>No words in this pool</div>
+            <p className={styles.hint}>
+              {config.category}
+              {config.level !== 'Random' ? ` · ${config.level}` : ''} has no matching vocabulary.
+            </p>
+          </Card>
+          <Button
+            id="empty-pool-back-btn"
+            variant="secondary"
+            onClick={() => dispatch({ type: 'SET_SCREEN', screen: 'home' })}
+          >
+            ← Back home
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   const dirLabel =
     config.direction === 'en-vi'

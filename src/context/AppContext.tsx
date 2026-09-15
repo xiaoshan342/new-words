@@ -14,11 +14,13 @@ import { LifetimeStats, loadStats, updateStats } from '@/utils/localStorage';
 
 export type AppScreen = 'home' | 'setup' | 'test' | 'result';
 export type TestDirection = 'en-vi' | 'vi-en';
+export type TestMode = 'type' | 'match';
 export type QuestionCount = number;
 
 export interface TestConfig {
   category: Category;
   direction: TestDirection;
+  mode: TestMode;
   questionCount: QuestionCount;
   level: CEFRLevel;
 }
@@ -49,7 +51,7 @@ type Action =
   | { type: 'UPDATE_CONFIG'; config: Partial<TestConfig> }
   | { type: 'START_TEST'; questions: VocabWord[] }
   | { type: 'ANSWER_CORRECT' }
-  | { type: 'ANSWER_WRONG'; userAnswer: string }
+  | { type: 'ANSWER_WRONG'; userAnswer: string; word?: VocabWord }
   | { type: 'NEXT_QUESTION' }
   | { type: 'FINISH_TEST' }
   | { type: 'RESET_TEST' }
@@ -60,6 +62,7 @@ type Action =
 const initialConfig: TestConfig = {
   category: 'All Topics',
   direction: 'en-vi',
+  mode: 'type',
   questionCount: 10,
   level: 'Random',
 };
@@ -106,7 +109,10 @@ function reducer(state: AppState, action: Action): AppState {
         test: { ...state.test, correctCount: state.test.correctCount + 1 },
       };
 
-    case 'ANSWER_WRONG':
+    case 'ANSWER_WRONG': {
+      const word =
+        action.word ?? state.test.questions[state.test.currentIndex];
+      if (!word) return state;
       return {
         ...state,
         test: {
@@ -114,12 +120,13 @@ function reducer(state: AppState, action: Action): AppState {
           wrongAnswers: [
             ...state.test.wrongAnswers,
             {
-              word: state.test.questions[state.test.currentIndex],
+              word,
               userAnswer: action.userAnswer,
             },
           ],
         },
       };
+    }
 
     case 'NEXT_QUESTION':
       return {

@@ -1,11 +1,12 @@
 .container {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: max(1.25rem, env(safe-area-inset-top)) 1rem max(1.5rem, env(safe-area-inset-bottom));
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .orb1 {
@@ -172,4 +173,35 @@
 .beginBtn {
   width: 100%;
   font-size: 1.15rem !important;
+  min-height: 48px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    gap: 1.15rem;
+  }
+
+  .title {
+    font-size: 1.65rem;
+  }
+
+  .configRow {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.3rem 0.75rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .configValue {
+    font-size: 0.92rem;
+    text-align: right;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
 }

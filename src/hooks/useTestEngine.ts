@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { useAppContext } from '@/context/AppContext';
 import { getRandomWords } from '@/data';
+import { loadWordMemory, recordAnswer } from '@/utils/wordMemory';
 
 export type FeedbackState = 'idle' | 'correct' | 'wrong';
 
@@ -58,6 +59,8 @@ export function useTestEngine() {
         : currentQuestion.en.trim().toLowerCase() === userAnswer;
 
 
+    recordAnswer(currentQuestion.en, isCorrect);
+
     if (isCorrect) {
       dispatch({ type: 'ANSWER_CORRECT' });
       setFeedback('correct');
@@ -85,14 +88,26 @@ export function useTestEngine() {
     inputValue,
     showFeedback,
     getCorrectAnswer,
+    config.direction,
     dispatch,
     isLastQuestion,
   ]);
 
-  const startTest = useCallback(() => {
-    const questions = getRandomWords(config.category, config.level, config.questionCount);
-    dispatch({ type: 'START_TEST', questions });
-  }, [config, dispatch]);
+  const startTest = useCallback(
+    (options: { reviewOnly?: boolean } = {}) => {
+      const memory = loadWordMemory();
+      const questions = getRandomWords(
+        config.category,
+        config.level,
+        config.questionCount,
+        memory,
+        options
+      );
+      if (questions.length === 0) return;
+      dispatch({ type: 'START_TEST', questions });
+    },
+    [config, dispatch]
+  );
 
   const restartTest = useCallback(() => {
     dispatch({ type: 'RESET_TEST' });
